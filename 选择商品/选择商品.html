@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#box {
+				width: 1000px;
+				height: 498px;
+				background: #86cac5;
+				margin: 30px auto 0;
+				padding: 20px
+			}
+			
+			#content {
+				width: 960px;
+				height: 458px;
+				background: #FFFFFF;
+				padding: 20px
+			}
+			
+			ul {
+				width: 960px;
+				height: 90px;
+				border-bottom: 1px dashed #86cac5;
+				list-style: none;
+				line-height: 90px;
+				font-size: 20px;
+			}
+			
+			li {
+				float: left;
+				margin: 0 15px;
+			}
+			
+			.titles {
+				color: #737373;
+				float: left;
+			}
+			
+			#choice {
+				/*height: 60px;*/
+			}
+			
+			#choice li {
+				border: 1px solid #2290a8;
+				line-height: 40px;
+				padding: 2px 2px 2px 10px;
+				margin-top: 20px;
+				color: #2290a8;
+			}
+			
+			#choice em {
+				padding: 5px 5px;
+				background: #2290a8;
+				color: #FFFFFF;
+				margin-left: 6px;
+			}
+			
+			#chotitle {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="content">
+
+				<ul id="choice">
+					<span class="titles">你的选择 :</span>
+
+				</ul>
+				<ul>
+
+					<span class="titles">品牌：</span>
+					<li>苹果</li>
+					<li>小米</li>
+					<li>锤子</li>
+					<li>魅族</li>
+					<li>华为</li>
+					<li>三星</li>
+					<li>VIVO</li>
+					<li>乐视</li>
+					<li>360</li>
+					<li>中兴</li>
+					<li>索尼</li>
+
+				</ul>
+				<ul>
+					<span class="titles">尺寸：</span>
+					<li>3.0英寸以下</li>
+					<li>3.0~3.9英寸</li>
+					<li>4.0~4.5英寸</li>
+					<li>4.6~4.9英寸</li>
+					<li>5.0~5.5英寸</li>
+					<li>6.0英寸以上</li>
+				</ul>
+				<ul>
+					<span class="titles">系统：</span>
+					<li>安卓（Android）</li>
+					<li>苹果（IOS）</li>
+					<li>微软（WindowsPhone）</li>
+					<li>无</li>
+					<li>其他</li>
+
+				</ul>
+				<ul>
+					<span class="titles">网络：</span>
+					<li>联通3G</li>
+					<li>双卡单4G</li>
+					<li>双卡双4G</li>
+					<li>联通4G</li>
+					<li>电信4G</li>
+					<li>移动4G</li>
+				</ul>
+
+			</div>
+
+		</div>
+
+		<script>
+			//获取所有的ul
+			var uls = document.getElementsByTagName('ul');
+
+			//选中的内容
+			var tChoice = uls[0].getElementsByTagName('li');
+
+			choiceContent(uls[1], 1);
+			choiceContent(uls[2], 2);
+			choiceContent(uls[3], 3);
+			choiceContent(uls[4], 4);
+
+			function choiceContent(ul, n) {
+
+				var choices = ul.getElementsByTagName('li');
+
+				for(var i = 0; i < choices.length; i++) {
+
+					choices[i].onclick = function() {
+
+						var li = document.createElement('li');
+
+						li.innerHTML = this.innerText;
+
+						var em = document.createElement('em');
+
+						em.innerHTML = '×';
+
+						li.appendChild(em);
+
+						if(uls[0].children[n]) {
+
+							uls[0].replaceChild(li, uls[0].children[n]);
+
+						} else {
+
+							uls[0].insertBefore(li, uls[0].children[n]);
+						}
+
+						//						uls[0].replaceChild(li,uls[0].children[1]);
+
+					} //choices[i]点击事件
+
+				} //for循环
+
+			} //choiceContent()函数
+		</script>
+	</body>
+
+</html>
